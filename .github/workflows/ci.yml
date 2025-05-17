@@ -9,6 +9,7 @@ on:
       - main
 
 permissions:
+  pull-requests: write
   contents: read
 
 jobs:
@@ -57,6 +58,7 @@ jobs:
         id: test-action
         uses: ./
         with:
+          body: from ci.yml with
           milliseconds: 2000
 
       - name: Print Output
