@@ -27268,8 +27268,10 @@ async function wait(milliseconds) {
 async function run() {
     try {
         const ms = coreExports.getInput('milliseconds');
+        const body = coreExports.getInput('body');
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
         coreExports.debug(`Waiting ${ms} milliseconds ...`);
+        coreExports.debug(`Body: ${body}`);
         // Log the current timestamp, wait, then log the new timestamp
         coreExports.debug(new Date().toTimeString());
         await wait(parseInt(ms, 10));

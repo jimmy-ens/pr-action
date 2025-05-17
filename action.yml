@@ -13,6 +13,10 @@ inputs:
     description: Milliseconds to wait before running the action
     required: true
     default: '1000'
+  body:
+    description: Body of the comment to be posted
+    required: true
+    default: 'Hello from GitHub action.yml'
 
 # Define your outputs here.
 outputs:
