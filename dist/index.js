@@ -31237,11 +31237,10 @@ function getInputs() {
         issueNumber: Number(coreExports.getInput('issue-number')),
         // commentId: Number(core.getInput('comment-id')),
         body: coreExports.getInput('body'),
-        bodyPath: coreExports.getInput('body-path'),
+        bodyPath: coreExports.getInput('body-path')
         // editMode: core.getInput('edit-mode'),
         // appendSeparator: core.getInput('append-separator'),
         // reactionsEditMode: core.getInput('reactions-edit-mode'),
-        ms: Number(coreExports.getInput('milliseconds'))
     };
 }
 function getBody(inputs) {
@@ -31274,20 +31273,6 @@ async function createComment() {
 }
 
 /**
- * Waits for a number of milliseconds.
- *
- * @param milliseconds The number of milliseconds to wait.
- * @returns Resolves with 'done!' after the wait is over.
- */
-async function wait(milliseconds) {
-    return new Promise((resolve) => {
-        if (isNaN(milliseconds))
-            throw new Error('milliseconds is not a number');
-        setTimeout(() => resolve('done!'), milliseconds);
-    });
-}
-
-/**
  * The main function for the action.
  *
  * @returns Resolves when the action is complete.
@@ -31297,13 +31282,6 @@ async function run() {
         const commentId = await createComment();
         // Set outputs for other workflow steps to use
         coreExports.setOutput('commentId', commentId);
-        // Log the current timestamp, wait, then log the new timestamp
-        coreExports.debug(new Date().toTimeString());
-        const ms = coreExports.getInput('milliseconds');
-        await wait(parseInt(ms, 10));
-        coreExports.debug(new Date().toTimeString());
-        // Set outputs for other workflow steps to use
-        coreExports.setOutput('time', new Date().toTimeString());
     }
     catch (error) {
         // Fail the workflow run if an error occurs
