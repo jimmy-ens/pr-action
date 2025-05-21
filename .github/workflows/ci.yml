@@ -9,6 +9,7 @@ on:
       - main
 
 permissions:
+  pull-requests: write
   contents: read
 
 jobs:
@@ -53,11 +54,13 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-      - name: Test Local Action
+      - name: PR Comment Action
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: from ci.yml with
 
       - name: Print Output
         id: output
