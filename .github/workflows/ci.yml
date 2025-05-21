@@ -54,12 +54,13 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-      - name: Test Local Action
+      - name: PR Comment Action
         id: test-action
         uses: ./
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # issue-number: ${{ github.event.pull_request.number }}
           body: from ci.yml with
-          milliseconds: 2000
 
       - name: Print Output
         id: output
