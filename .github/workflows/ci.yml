@@ -58,7 +58,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           # issue-number: ${{ github.event.pull_request.number }}
           body: from ci.yml with
 
