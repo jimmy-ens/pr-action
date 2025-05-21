@@ -11,7 +11,6 @@ export type Inputs = {
   // editMode: string
   // appendSeparator: string
   // reactionsEditMode: string
-  ms: number
 }
 
 export function getInputs(): Inputs {
@@ -21,11 +20,10 @@ export function getInputs(): Inputs {
     issueNumber: Number(core.getInput('issue-number')),
     // commentId: Number(core.getInput('comment-id')),
     body: core.getInput('body'),
-    bodyPath: core.getInput('body-path'),
+    bodyPath: core.getInput('body-path')
     // editMode: core.getInput('edit-mode'),
     // appendSeparator: core.getInput('append-separator'),
     // reactionsEditMode: core.getInput('reactions-edit-mode'),
-    ms: Number(core.getInput('milliseconds'))
   }
 }
 
