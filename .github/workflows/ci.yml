@@ -1,4 +1,4 @@
-name: ci
+name: Continuous Integration
 
 on:
   pull_request:
@@ -48,7 +48,6 @@ jobs:
   test-action:
     name: GitHub Actions Test
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: Checkout
