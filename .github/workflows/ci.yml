@@ -1,4 +1,4 @@
-name: ci
+name: Continuous Integration
 
 on:
   pull_request:
@@ -59,7 +59,7 @@ jobs:
         uses: ./
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          body: from ci.yml with
+          body: This comment is from PR Comment Action in ci.yml
 
       - name: Print Output
         id: output
