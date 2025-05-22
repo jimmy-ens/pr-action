@@ -31235,12 +31235,8 @@ function getInputs() {
         token: coreExports.getInput('token'),
         repository: coreExports.getInput('repository'),
         issueNumber: Number(coreExports.getInput('issue-number')),
-        // commentId: Number(core.getInput('comment-id')),
         body: coreExports.getInput('body'),
         bodyPath: coreExports.getInput('body-path')
-        // editMode: core.getInput('edit-mode'),
-        // appendSeparator: core.getInput('append-separator'),
-        // reactionsEditMode: core.getInput('reactions-edit-mode'),
     };
 }
 function getBody(inputs) {
@@ -31255,6 +31251,9 @@ function getBody(inputs) {
     }
     return body;
 }
+function getErrorMessage(error) {
+    return error instanceof Error ? error.message : String(error);
+}
 
 async function createComment() {
     const inputs = getInputs();
@@ -31268,7 +31267,10 @@ async function createComment() {
         issue_number: inputs.issueNumber,
         body
     });
-    coreExports.info(`Created comment id '${comment.id}' on issue '${inputs.issueNumber}'.`);
+    // Set outputs for other workflow steps to use
+    coreExports.setOutput('comment-id', comment.id);
+    coreExports.setOutput('body', comment.body);
+    coreExports.setOutput('html-url', comment.html_url);
     return comment.id;
 }
 
@@ -31280,13 +31282,11 @@ async function createComment() {
 async function run() {
     try {
         const commentId = await createComment();
-        // Set outputs for other workflow steps to use
-        coreExports.setOutput('comment-id', commentId);
+        coreExports.info(`Created comment id '${commentId}'.`);
     }
     catch (error) {
-        // Fail the workflow run if an error occurs
-        if (error instanceof Error)
-            coreExports.setFailed(error.message);
+        coreExports.debug(inspect(error));
+        coreExports.setFailed(getErrorMessage(error));
     }
 }
 

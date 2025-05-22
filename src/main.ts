@@ -1,5 +1,7 @@
 import * as core from '@actions/core'
 import { createComment } from './create-comment.js'
+import { inspect } from 'util'
+import * as utils from './utils.js'
 
 /**
  * The main function for the action.
@@ -9,11 +11,9 @@ import { createComment } from './create-comment.js'
 export async function run(): Promise<void> {
   try {
     const commentId = await createComment()
-
-    // Set outputs for other workflow steps to use
-    core.setOutput('comment-id', commentId)
+    core.info(`Created comment id '${commentId}'.`)
   } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) core.setFailed(error.message)
+    core.debug(inspect(error))
+    core.setFailed(utils.getErrorMessage(error))
   }
 }

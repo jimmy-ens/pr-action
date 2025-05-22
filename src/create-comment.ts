@@ -17,8 +17,11 @@ export async function createComment(): Promise<number> {
     issue_number: inputs.issueNumber,
     body
   })
-  core.info(
-    `Created comment id '${comment.id}' on issue '${inputs.issueNumber}'.`
-  )
+
+  // Set outputs for other workflow steps to use
+  core.setOutput('comment-id', comment.id)
+  core.setOutput('body', comment.body)
+  core.setOutput('html-url', comment.html_url)
+
   return comment.id
 }
