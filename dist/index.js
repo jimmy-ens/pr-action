@@ -31281,7 +31281,7 @@ async function run() {
     try {
         const commentId = await createComment();
         // Set outputs for other workflow steps to use
-        coreExports.setOutput('commentId', commentId);
+        coreExports.setOutput('comment-id', commentId);
     }
     catch (error) {
         // Fail the workflow run if an error occurs
