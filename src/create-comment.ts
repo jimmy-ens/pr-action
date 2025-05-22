@@ -21,6 +21,9 @@ export async function createComment(): Promise<number> {
   // Set outputs for other workflow steps to use
   core.setOutput('comment-id', comment.id)
   core.setOutput('body', comment.body)
+  core.setOutput('body-text', comment.body_text)
+  core.setOutput('body-html', comment.body_html)
+  core.setOutput('html', comment.url)
   core.setOutput('html-url', comment.html_url)
 
   return comment.id
