@@ -31270,6 +31270,9 @@ async function createComment() {
     // Set outputs for other workflow steps to use
     coreExports.setOutput('comment-id', comment.id);
     coreExports.setOutput('body', comment.body);
+    coreExports.setOutput('body-text', comment.body_text);
+    coreExports.setOutput('body-html', comment.body_html);
+    coreExports.setOutput('html', comment.url);
     coreExports.setOutput('html-url', comment.html_url);
     return comment.id;
 }
