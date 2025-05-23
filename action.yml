@@ -21,7 +21,6 @@ inputs:
       'The number of the issue or pull request in which to create a comment.'
   body:
     description: Body of the comment to be posted
-    default: 'Hello from GitHub action.yml'
   body-path:
     description:
       'The path to a file containing the comment body. Cannot be used in
