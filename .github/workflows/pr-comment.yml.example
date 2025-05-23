@@ -1,0 +1,39 @@
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  comment_pr:
+    name: Create PR Comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set body-path based on event type
+        id: set-body-path
+        run: |
+          if [[ "${{ github.event.action }}" == "opened" ]]; then
+            echo "body-path=.github/comment-body-opened.md" >> $GITHUB_OUTPUT
+          else
+            echo "body-path=.github/comment-body-other.md" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment PR with body-path
+        uses: jimmy-ens/pr-action@v1
+        id: pr-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          token: ${{ github.token }}
+          body-variable-1: the value of body-variable-1 (from yml)
+          body-path: ${{ steps.set-body-path.outputs.body-path }}
+
+      - name: Check outputs
+        run: |
+          echo "comment-id : ${{ steps.pr-comment.outputs.comment-id }}"
+          echo "body : ${{ steps.pr-comment.outputs.body }}"
+          echo "html-url : ${{ steps.pr-comment.outputs.html-url }}"

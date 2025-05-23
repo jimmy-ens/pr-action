@@ -1,0 +1,3 @@
+- The comment for PR other
+  - {{bodyVariable1}}
+  - {{bodyVariable2}}
