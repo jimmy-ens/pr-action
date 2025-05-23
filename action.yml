@@ -21,11 +21,18 @@ inputs:
       'The number of the issue or pull request in which to create a comment.'
   body:
     description: Body of the comment to be posted
-    required: true
     default: 'Hello from GitHub action.yml'
   body-path:
     description:
       'The path to a file containing the comment body. Cannot be used in
+      conjunction with `body`.'
+  body-variable-1:
+    description:
+      'A variable to be used in the comment body. Cannot be used in conjunction
+      with `body`.'
+  body-variable-2:
+    description:
+      'Another variable to be used in the comment body. Cannot be used in
       conjunction with `body`.'
 
 # Define your outputs here.
