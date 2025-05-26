@@ -53,7 +53,9 @@ need to perform some initial setup steps before you can develop your action.
 ## Update the Action Metadata
 
 The [`action.yml`](action.yml) file defines metadata about your action, such as
-input(s) and output(s). For details about this file, see
+input(s) and output(s).
+
+For details about this file, see
 [Metadata syntax for GitHub Actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions).
 
 ## Update the Action Code
@@ -63,9 +65,10 @@ source code that will be run when your action is invoked.
 
 ## Validate the Action
 
-You can now validate the action by referencing it in a workflow file. For
-example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to reference an
-action in the same repository.
+You can now validate the action by referencing it in a workflow file.
+
+For example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to
+reference an action in the same repository.
 
 ```yaml
 steps:
@@ -99,8 +102,9 @@ To include the action in a workflow in another repository (the action consumer),
 you can use the `uses` syntax with the `@` symbol to reference a specific
 branch, tag, or commit hash.
 
-Please copy `pr-comment.yml.example` to another repository for testing (rename
-it to `pr-comment.yml`).
+Copy `pr-comment.yml.example` (rename it to `pr-comment.yml`),
+`pr-comment-body-opened.md` and `pr-comment-body-other.md` to another repository
+for testing.
 
 > **Note:**  
 > You'll need to replace `jimmy-ens/pr-action@v1` with your
