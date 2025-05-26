@@ -67,7 +67,8 @@ source code that will be run when your action is invoked.
 
 You can now validate the action by referencing it in a workflow file.
 
-For example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to reference an action in the same repository.
+For example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to
+reference an action in the same repository.
 
 ```yaml
 steps:
@@ -101,7 +102,9 @@ To include the action in a workflow in another repository (the action consumer),
 you can use the `uses` syntax with the `@` symbol to reference a specific
 branch, tag, or commit hash.
 
-Copy `pr-comment.yml.example` (rename it to `pr-comment.yml`), `pr-comment-body-opened.md` and `pr-comment-body-other.md` to another repository for testing.
+Copy `pr-comment.yml.example` (rename it to `pr-comment.yml`),
+`pr-comment-body-opened.md` and `pr-comment-body-other.md` to another repository
+for testing.
 
 > **Note:**  
 > You'll need to replace `jimmy-ens/pr-action@v1` with your
