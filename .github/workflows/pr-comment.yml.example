@@ -24,6 +24,7 @@ jobs:
           fi
 
       - name: Comment PR with body-path
+        # Update the published GitHub Action {userName}/{repoName}@{version} when needed
         uses: jimmy-ens/pr-action@v1
         id: pr-comment
         with:
